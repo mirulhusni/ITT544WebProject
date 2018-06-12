@@ -1,0 +1,296 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+            <title>View Profile</title>
+            <link rel="stylesheet" href="css/pure-min.css"/>
+            <style>
+                body {
+                    color: #777;
+                }
+                .pure-img-responsive {
+                    max-width: 100%;
+                    height: auto;
+                }
+                #layout,
+                #menu,
+                .menu-link {
+                    -webkit-transition: all 0.2s ease-out;
+                    -moz-transition: all 0.2s ease-out;
+                    -ms-transition: all 0.2s ease-out;
+                    -o-transition: all 0.2s ease-out;
+                    transition: all 0.2s ease-out;
+                }
+                #layout {
+                    position: relative;
+                    left: 0;
+                    padding-left: 0;
+                }
+                #layout.active #menu {
+                    left: 150px;
+                    width: 150px;
+                }
+
+                #layout.active .menu-link {
+                    left: 150px;
+                }
+                .content {
+                    margin: 0 auto;
+                    padding: 0 2em;
+                    max-width: 800px;
+                    margin-bottom: 50px;
+                    line-height: 1.6em;
+                }
+                .header {
+                     margin: 0;
+                     color: #333;
+                     text-align: center;
+                     padding: 1em 2em 0;
+                     border-bottom: 3px solid #eee;
+                 }
+                    .header h1 {
+                        margin: 0.2em 0;
+                        font-size: 3em;
+                        font-weight: 300;
+                    }
+                     .header h2 {
+                        font-weight: 300;
+                        color: #ccc;
+                        padding: 0;
+                        margin-top: 0;
+                    }
+                .content-subhead {
+                    margin: 50px 0 20px 0;
+                    font-weight: 300;
+                    color: #888;
+                }
+                #menu {
+                    margin-left: -200px;
+                    width: 200px;
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    bottom: 0;
+                    z-index: 1000;
+                    background: #191818;
+                    overflow-y: auto;
+                    -webkit-overflow-scrolling: touch;
+                }
+                #menu a {
+                    color: #999;
+                    border: none;
+                    padding: 0.6em 0 0.6em 0.6em;
+                }
+                 #menu .pure-menu,
+                 #menu .pure-menu ul {
+                    border: none;
+                    background: transparent;
+                }
+                #menu .pure-menu ul,
+                #menu .pure-menu .menu-item-divided {
+                    border-top: 1px solid #333;
+                }
+                #menu .pure-menu li a:hover,
+                #menu .pure-menu li a:focus {
+                    background: #333;
+                }
+                #menu .pure-menu-selected,
+                #menu .pure-menu-heading {
+                    background: #1f8dd6;
+                }
+                #menu .pure-menu-selected a {
+                    color: #fff;
+                }
+                #menu .pure-menu-heading {
+                    font-size: 110%;
+                    color: #fff;
+                    margin: 0;
+                }
+                .menu-link {
+                    position: fixed;
+                    display: block; /* show this only on small screens */
+                    top: 0;
+                    left: 0; /* "#menu width" */
+                    background: #000;
+                    background: rgba(0,0,0,0.7);
+                    font-size: 10px; /* change this value to increase/decrease button size */
+                    z-index: 10;
+                    width: 2em;
+                    height: auto;
+                    padding: 2.1em 1.6em;
+                }
+                    .menu-link:hover,
+                    .menu-link:focus {
+                        background: #000;
+                    }
+
+                    .menu-link span {
+                        position: relative;
+                        display: block;
+                    }
+
+                    .menu-link span,
+                    .menu-link span:before,
+                    .menu-link span:after {
+                        background-color: #fff;
+                        width: 100%;
+                        height: 0.2em;
+                    }
+
+                        .menu-link span:before,
+                        .menu-link span:after {
+                            position: absolute;
+                            margin-top: -0.6em;
+                            content: " ";
+                        }
+
+                        .menu-link span:after {
+                            margin-top: 0.6em;
+                        }
+                @media (min-width: 0em){
+
+                    .header,
+                    .content {
+                        padding-left: 2em;
+                        padding-right: 2em;
+                    }
+
+                    #layout {
+                        padding-left: 200px; /* left col width "#menu" */
+                        left: 0;
+                    }
+                    #menu {
+                        left: 200px;
+                    }
+
+                    .menu-link {
+                        position: fixed;
+                        left: 200px;
+                        display: none;
+                    }
+
+                    #layout.active .menu-link {
+                        left: 200px;
+                    }
+                }
+                
+                .post {
+                    color: #333;
+                    text-align: center;
+                    padding: 0em 10em 1em;
+                    border-bottom: 3px solid #eee;
+                    display:block; 
+                    overflow:hidden;
+                    width: auto;
+                }
+                .post-title {
+                    font-size: 2em;
+                    color: #222;
+                    margin-bottom: 0.2em;
+                }
+                .post-avatar {
+                    border-radius: 50px;
+                    float: right;
+                    margin-left: 1em;
+                }
+                .post-description {
+                    font-family: Georgia, "Cambria", serif;
+                    color: #444;
+                    line-height: 1.8em;
+                    text-align: center;
+                }
+                .post-meta {
+                    color: #999;
+                    font-size: 90%;
+                    margin: 0;
+                }
+
+                .post-category {
+                    margin: 0 0.1em;
+                    padding: 0.3em 0em;
+                    color: #fff;
+                    background: #999;
+                    font-size: 80%;
+                }
+                    .post-category-design {
+                        background: #5aba59;
+                    }
+                    .post-category-pure {
+                        background: #4d85d1;
+                    }
+                    .post-category-yui {
+                        background: #8156a7;
+                    }
+                    .post-category-js {
+                        background: #df2d4f;
+                    }
+
+                .post-images {
+                    margin: 1em 0;
+                }
+                .post-image-meta {
+                    margin-top: -3.5em;
+                    margin-left: 1em;
+                    color: #fff;
+                    text-shadow: 0 1px 1px #333;
+                }
+
+            </style>
+    </h:head>
+    <h:body>
+        <div id="layout">
+            <div id="menu">
+                <div class="pure-menu">
+                    <a class="pure-menu-heading" href="#">Network</a>
+
+                    <ul class="pure-menu-list">
+                        <li><h:link style="border-bottom: 3px solid #eee;" class="pure-menu-link" outcome="/dashboard.xhtml" value="Home"/></li>
+                        <li><h:link style="border-bottom: 3px solid #eee;" class="pure-menu-link" outcome="/newPost.xhtml" value="New Post"/></li>
+                        <li><h:link style="border-bottom: 3px solid #eee;" class="pure-menu-link" outcome="/yourPost.xhtml" value="View Your Post"/></li>
+                        <li><h:link style="border-bottom: 3px solid #eee;" class="pure-menu-link" outcome="/newMessage.xhtml" value="New Message"/></li>
+                        <li><h:link style="border-bottom: 3px solid #eee;" class="pure-menu-link" outcome="/inbox.xhtml" value="Inbox"/></li>
+                        <li><h:link style="border-bottom: 3px solid #eee;" class="pure-menu-link" outcome="/weather.xhtml" value="Weather"/></li>
+                        <li><h:form><h:commandLink style="border-bottom: 3px solid #eee;" class="pure-menu-link" action="#{usersBean.getUser2(login.user)}" value="View Profile"/></h:form></li>
+                        <li><h:form><h:commandLink style="border-bottom: 3px solid #eee;" class="pure-menu-link" action="#{usersBean.getUser}" value="Edit Profile"/></h:form></li>
+                        <li><h:form><h:commandLink style="border-bottom: 3px solid #eee;" class="pure-menu-link" action="#{login.logout}" value="Log Out"/></h:form></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="main">
+                <div class="header">
+                    <h1>#{users2.username}'s Profile</h1>
+                </div>
+                
+                <div class="content pure-u-1 pure-u-md-3-4">
+                    <div>
+                        <div class="posts"><br/>
+                            <fieldset style="width: 300px; margin-left:50%;margin-right:50%; border-color: #eee; border-radius: 5%; border-width: 3px;"><br/>
+                            <h:form>
+                                    <h:panelGrid columns="2">
+                                        <h:outputLabel value="Username: "/>
+                                        <h:inputText id="username" value="#{users2.username}" readonly="true"/>
+                                        <h:outputLabel value="First Name: "/>
+                                        <h:inputText id="firstname" value="#{users2.firstname}" readonly="true"/>
+                                        <h:outputLabel value="Last Name: "/>
+                                        <h:inputText id="lastname" value="#{users2.lastname}" readonly="true"/>
+                                        <h:outputLabel value="Gender: "/>
+                                        <h:inputText id="gender" value="#{users2.gender}" readonly="true"/>
+                                        <h:outputLabel value="Email: "/>
+                                        <h:inputText id="email" value="#{users2.email}" readonly="true"/>
+                                        <h:outputLabel value="Age: "/>
+                                        <h:inputText id="age" value="#{users2.age}" readonly="true"/>
+                                    </h:panelGrid>
+                                    <br />
+                            </h:form></fieldset>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br/>
+    </h:body>
+</html>
